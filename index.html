@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Acervo — Portfólio</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#141416;--bg2:#222226;--ink:#fff;--mute:#c8c8cc;--ac:#ff5a1f;--ac2:#ffb020;--line:rgba(255,255,255,.14);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Outfit',system-ui,sans-serif;overflow-x:hidden}
+a{color:inherit}button{font-family:inherit}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(20,20,22,.94);backdrop-filter:blur(8px);border-bottom:2px solid var(--ac)}
+nav{display:flex;align-items:center;gap:30px;padding:14px 24px;max-width:1200px;margin:0 auto;flex-wrap:wrap}
+.logo{font-weight:800;font-size:1.5rem;padding-right:24px;border-right:1px solid var(--line)}.logo b{color:var(--ac)}
+nav a.l{text-decoration:none;font-size:.85rem;font-weight:600}nav a.l:hover{color:var(--ac)}
+nav .pill{margin-left:auto;background:linear-gradient(90deg,var(--ac),var(--ac2));color:#111;font-weight:700;padding:10px 20px;border-radius:30px;text-decoration:none;font-size:.85rem}
+.hero{position:relative;min-height:600px;overflow:hidden;background:#141416}
+.blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.55;animation:fl 12s ease-in-out infinite alternate}
+.b1{width:480px;height:480px;background:var(--ac);top:-120px;right:8%}.b2{width:380px;height:380px;background:#3a7bd5;bottom:-140px;left:4%;animation-delay:-5s}
+@keyframes fl{to{transform:translate(50px,40px) scale(1.15)}}
+.slide{position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between;gap:30px;padding:40px max(24px,calc((100% - 1200px)/2 + 24px));opacity:0;visibility:hidden;transition:opacity .6s}
+.slide.on{opacity:1;visibility:visible}
+.txt{max-width:640px;position:relative}
+.txt h1{font-size:clamp(2.4rem,6vw,4.8rem);line-height:1.04;margin:0 0 18px;font-weight:800;background:linear-gradient(90deg,#fff 40%,var(--ac2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.txt p{font-size:1.15rem;color:var(--mute);margin:0 0 30px}
+.cta{display:inline-flex;align-items:center;gap:50px;background:var(--ac);padding:20px 30px;text-decoration:none;font-weight:600;transition:.2s;box-shadow:0 10px 30px rgba(255,90,31,.4)}
+.cta:hover{transform:translateY(-3px);background:var(--ac2);color:#111}
+.polaroid{flex:none;width:340px;background:#f3f1ec;padding:16px 16px 60px;transform:rotate(6deg);box-shadow:0 30px 70px rgba(0,0,0,.6);position:relative;animation:sw 6s ease-in-out infinite alternate}
+@keyframes sw{to{transform:rotate(3deg) translateY(-10px)}}
+.polaroid .pic{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:7rem}
+.polaroid span{position:absolute;bottom:14px;left:0;right:0;text-align:center;font-family:'Caveat',cursive;font-size:2rem;color:#333;transform:rotate(-4deg)}
+.arrow{position:absolute;top:50%;width:46px;height:46px;border:1px solid var(--line);background:rgba(0,0,0,.35);color:#fff;border-radius:50%;cursor:pointer;font-size:1.4rem;z-index:5}.arrow:hover{background:var(--ac)}
+.prev{left:14px}.next{right:14px}
+.dots{position:absolute;bottom:22px;left:0;right:0;display:flex;justify-content:center;gap:12px;z-index:5}
+.dots button{width:12px;height:12px;border-radius:50%;border:0;background:rgba(255,255,255,.4);cursor:pointer;padding:0}
+.dots button.on{background:var(--ac);box-shadow:0 0 0 4px rgba(255,90,31,.35)}
+.rib{background:linear-gradient(90deg,var(--ac),var(--ac2));color:#111;overflow:hidden;white-space:nowrap;font-weight:800;font-size:1.1rem;padding:14px 0;transform:rotate(-1deg);margin:-8px -10px 0;position:relative;z-index:3}
+.rib div{display:inline-block;animation:mq 22s linear infinite}@keyframes mq{to{transform:translateX(-50%)}}
+.stats{max-width:1200px;margin:0 auto;padding:60px 24px 10px;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px;text-align:center}
+.stats b{display:block;font-size:3.4rem;font-weight:800;background:linear-gradient(90deg,var(--ac),var(--ac2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.stats span{color:var(--mute);font-size:.9rem}
+.news{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));margin-top:50px;position:relative}
+.news article{padding:46px 30px 40px;min-height:330px;display:flex;flex-direction:column}
+.news h2{font-size:1.8rem;line-height:1.2;margin:0 0 16px;font-weight:600}
+.news p{color:#ececee;font-size:.95rem;line-height:1.55;margin:0 0 22px}
+.news a{margin-top:auto;font-weight:600;font-size:.9rem;text-decoration:underline;text-decoration-color:var(--ac);text-underline-offset:5px}
+.n0{background:linear-gradient(160deg,#2b3a4a,#1d2733)}.n1{background:linear-gradient(160deg,#4a3d5a,#2a2035)}.n2{background:linear-gradient(160deg,#b8801a,#5a3a08)}
+section.proj{max-width:1200px;margin:0 auto;padding:80px 24px 60px}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:30px}
+.sec-head h2{font-size:2.8rem;margin:0;font-weight:800}.sec-head h2 em{color:var(--ac);font-style:normal}
+.tools{display:flex;gap:10px;flex-wrap:wrap}
+.tools input,.tools select{background:var(--bg2);border:1px solid var(--line);color:#fff;padding:12px 16px;font-family:inherit;font-size:.9rem;min-width:190px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:22px}
+.card{background:var(--bg2);border:1px solid var(--line);transition:.25s;display:flex;flex-direction:column;position:relative}
+.card:hover{transform:translateY(-6px);border-color:var(--ac);box-shadow:0 20px 40px rgba(255,90,31,.2)}
+.cv{aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;font-size:4.2rem}
+.cb{padding:20px;display:flex;flex-direction:column;gap:8px;flex:1}
+.cb small{color:var(--ac);font-weight:700;font-size:.73rem;letter-spacing:.5px;text-transform:uppercase}
+.cb h3{margin:0;font-size:1.25rem;font-weight:600;line-height:1.25}.cb p{margin:0;color:var(--mute);font-size:.9rem;line-height:1.5}
+.cb a.q{margin-top:auto;padding-top:10px;font-weight:600;font-size:.88rem;text-decoration:none;color:var(--ac)}
+.priv{position:absolute;top:10px;left:10px;background:#111;color:var(--ac2);font-size:.7rem;font-weight:700;padding:4px 10px;border-radius:20px;z-index:2}
+.note{background:rgba(255,176,32,.12);color:var(--ac2);font-size:.8rem;padding:8px 10px;border-radius:6px}
+.empty{grid-column:1/-1;text-align:center;color:var(--mute);padding:50px 0}
+footer{background:#0d0d0f;border-top:2px solid var(--ac);padding:44px 24px;text-align:center;color:var(--mute);font-size:.9rem}
+footer strong{display:block;font-size:1.5rem;color:#fff;margin-bottom:8px}#sec{cursor:default}
+/* admin */
+.bar{position:fixed;bottom:calc(16px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);z-index:60;background:#fff;color:#111;border-radius:40px;padding:8px 10px 8px 20px;display:none;align-items:center;gap:8px;box-shadow:0 10px 40px rgba(0,0,0,.6);font-size:.85rem;font-weight:600;flex-wrap:wrap;justify-content:center;max-width:94vw}
+.bar.on{display:flex}.bar i{width:9px;height:9px;background:#22c55e;border-radius:50%}
+.bar button{border:0;border-radius:30px;padding:9px 15px;font-weight:600;cursor:pointer;background:#eee;font-size:.82rem}.bar button.p{background:var(--ac);color:#fff}
+.ed{display:none}.adm .ed{display:inline-block}
+.eb{background:#fff;color:#111;border:0;border-radius:6px;padding:6px 12px;font-size:.78rem;font-weight:700;cursor:pointer;margin-top:10px}
+.ca{display:none;gap:8px;padding:0 20px 18px}.adm .ca{display:flex}.ca button{flex:1;background:none;border:1px solid var(--line);color:#fff;padding:8px;cursor:pointer;font-size:.8rem;font-weight:600}.ca button:hover{border-color:var(--ac);color:var(--ac)}
+.ov{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center;padding:18px;z-index:80}.ov.on{display:flex}
+.mo{background:#fff;color:#111;max-width:520px;width:100%;max-height:90vh;overflow:auto;padding:26px;border-radius:12px}
+.mo h2{margin:0 0 16px;font-size:1.4rem}.mo label{display:block;font-size:.76rem;font-weight:700;color:#555;margin:12px 0 5px}
+.mo input,.mo textarea{width:100%;font:inherit;font-size:.92rem;padding:10px;border:1px solid #ccc;border-radius:6px}.mo textarea{min-height:70px}
+.mo input[type=checkbox]{width:auto;margin-right:8px}.mo hr{border:0;border-top:1px dashed #ccc;margin:16px 0}
+.ma{display:flex;justify-content:flex-end;gap:10px;margin-top:20px}.ma button{padding:10px 18px;border:0;border-radius:6px;font-weight:700;cursor:pointer;background:#eee}.ma .p{background:var(--ac);color:#fff}
+.err{color:#c0392b;font-size:.82rem;min-height:1em;margin-top:8px}.hint{font-size:.78rem;color:#777;margin-top:8px}
+.toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#111;border:1px solid var(--ac);padding:10px 20px;border-radius:8px;z-index:90;font-size:.88rem;opacity:0;pointer-events:none;transition:.3s}.toast.on{opacity:1}
+.cv{position:relative;overflow:hidden}.cv img{width:100%;height:100%;object-fit:cover}
+.mr{position:absolute;bottom:8px;right:8px;background:rgba(0,0,0,.7);color:#fff;font-size:.72rem;padding:3px 9px;border-radius:12px;font-weight:700}
+.mo label.drop{display:block;border:2px dashed #bbb;border-radius:8px;padding:16px;text-align:center;cursor:pointer;color:#555;font-weight:600;margin:0;font-size:.9rem}.mo label.drop:hover{border-color:var(--ac);color:var(--ac)}
+.th{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.tb{position:relative;width:64px;height:64px;border-radius:6px;overflow:hidden;border:1px solid #ccc}.tb img{width:100%;height:100%;object-fit:cover}
+.tb button{position:absolute;top:2px;right:2px;width:18px;height:18px;border:0;border-radius:50%;background:rgba(0,0,0,.75);color:#fff;font-size:11px;cursor:pointer;padding:0}
+.lb{position:fixed;inset:0;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;z-index:95;padding:24px}.lb.on{display:flex}
+.lb img{max-width:92vw;max-height:82vh;border-radius:6px}.lb .x{position:absolute;top:14px;right:22px;background:none;border:0;color:#fff;font-size:2.2rem;cursor:pointer}
+.lb .a{position:absolute;top:50%;background:rgba(255,255,255,.14);border:0;color:#fff;width:46px;height:46px;border-radius:50%;font-size:1.5rem;cursor:pointer}.lb .l{left:14px}.lb .r{right:14px}
+.lb .c{position:absolute;bottom:18px;color:#ddd;font-size:.85rem}
+@media(max-width:820px){.polaroid{display:none}.hero{min-height:540px}nav{gap:16px}.logo{border:0;padding:0}nav .pill{margin-left:0}}
+</style>
+</head>
+<body>
+<header class="top"><nav><div class="logo">Acervo<b>.</b></div><a class="l" href="#inicio">Início</a><a class="l" href="#novidades">Novidades</a><a class="l" href="#projetos">Projetos</a><a class="pill" id="pill" href="#contato">Fale comigo</a></nav></header>
+
+<section class="hero" id="inicio"><div class="blob b1"></div><div class="blob b2"></div><div id="slides"></div>
+<button class="arrow prev" id="prev" aria-label="Anterior">‹</button><button class="arrow next" id="next" aria-label="Próximo">›</button><div class="dots" id="dots"></div></section>
+<div class="rib"><div id="rib"></div></div>
+<div class="stats"><div><b id="s1">0</b><span>projetos entregues</span></div><div><b id="s2">0</b><span>clientes atendidos</span></div><div><b id="s3">0</b><span>anos de estrada</span></div></div>
+<section class="news" id="novidades"></section>
+<section class="proj" id="projetos"><div class="sec-head"><h2>Projetos <em>em destaque</em></h2>
+<div class="tools"><input id="q" placeholder="Buscar projeto ou cliente..."><select id="ord"><option value="d">Mais recentes</option><option value="a">Ordem alfabética</option></select></div></div><div class="grid" id="grid"></div></section>
+<footer id="contato"><strong>Vamos criar algo juntos?</strong><span id="ft"></span><br><br><span id="sec">©</span> 2026 Acervo</footer>
+
+<div class="bar" id="bar"><i></i>Modo edição<button id="eS">Banner</button><button id="eN">Novidades</button><button id="eC">Atendimento</button><button class="p" id="eP">+ Projeto</button><button id="out">Sair</button></div>
+<div class="ov" id="ov"><div class="mo" id="mo"></div></div><div class="lb" id="lb"><button class="x" id="lx">×</button><button class="a l" id="lp">‹</button><img id="li" alt=""><button class="a r" id="ln">›</button><div class="c" id="lc"></div></div><div class="toast" id="toast"></div>
+
+<script>
+const KEY='acervo-demo-v3',PASS='acervo2026';
+const DEF={slides:[
+{t:'Portfólio 2026',s:'Projetos que saem do papel e ganham vida.',b:'Ver projetos',h:'#projetos',e:'🎨',c:'#ffd9c2',tag:'#Acervo'},
+{t:'Novo projeto no ar: Padaria Trigo',s:'Identidade visual completa, do logo à embalagem.',b:'Conhecer o projeto',h:'#projetos',e:'🥖',c:'#f6e2b3',tag:'#NovoProjeto'},
+{t:'Vamos conversar sobre o seu?',s:'Orçamento sem compromisso em até 24 horas.',b:'Fale comigo',h:'#contato',e:'💬',c:'#cfe6df',tag:'#VemComigo'}],
+news:[{t:'Novo projeto no ar: Padaria Trigo',x:'Identidade visual completa, com logo, paleta e embalagens que já estão nas prateleiras.'},
+{t:'Agenda aberta para 2027',x:'Recebendo novos projetos de identidade visual, sites e embalagens. Vagas limitadas por trimestre.'},
+{t:'Feito com cuidado e detalhe',x:'Cada projeto começa ouvindo o cliente. Você acompanha tudo de perto e participa das decisões.'}],
+projs:[{id:'1',t:'Identidade visual — Padaria Trigo',c:'Maria Souza',d:'2026-08-12',x:'Novo logo, paleta de cores e embalagens para a padaria.',n:'Aguardando aprovação da fase 2.',pub:true,e:'🥖',g:'#8a5a1a,#c99a4b'},
+{id:'2',t:'Site institucional',c:'Estúdio Alma',d:'2026-06-03',x:'Site com portfólio e blog, entregue e no ar.',n:'',pub:true,e:'💻',g:'#25505a,#3f8a94'},
+{id:'3',t:'Embalagens de produto',c:'Doce Lar',d:'2026-05-20',x:'Linha de embalagens para 6 produtos da marca.',n:'',pub:true,e:'📦',g:'#7a2e2e,#c25a4a'},
+{id:'4',t:'Rebranding completo',c:'Café Raiz',d:'2026-09-01',x:'Reposicionamento de marca (proposta em análise).',n:'Valor: R$ 8.500. Follow-up sexta.',pub:false,e:'☕',g:'#3a2a1a,#7a5a3a'}]};
+let S;try{S=JSON.parse(localStorage.getItem(KEY))||JSON.parse(JSON.stringify(DEF))}catch(e){S=JSON.parse(JSON.stringify(DEF))}
+S.cfg=S.cfg||{email:'contato@seudominio.com',info:'Resposta em até 24 horas',link:'#contato'};
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S));return true}catch(e){return false}};
+const $=id=>document.getElementById(id);
+const esc=s=>{const d=document.createElement('div');d.textContent=s||'';return d.innerHTML.replace(/"/g,'&quot;')};
+let admin=false,i=0,timer;
+function toast(t){const x=$('toast');x.textContent=t;x.classList.add('on');setTimeout(()=>x.classList.remove('on'),2600)}
+function hero(){$('slides').innerHTML=S.slides.map(s=>`<div class="slide"><div class="txt"><h1>${esc(s.t)}</h1><p>${esc(s.s)}</p><a class="cta" href="${esc(url(s.h,'#projetos'))}"${tgt(url(s.h,'#projetos'))}>${esc(s.b)} <span>→</span></a></div><div class="polaroid"><div class="pic" style="background:${s.c}">${s.e}</div><span>${esc(s.tag)}</span></div></div>`).join('');
+$('dots').innerHTML=S.slides.map((_,k)=>`<button data-k="${k}"></button>`).join('');go(i)}
+function go(n){i=(n+S.slides.length)%S.slides.length;[...$('slides').children].forEach((e,k)=>e.classList.toggle('on',k===i));[...$('dots').children].forEach((e,k)=>e.classList.toggle('on',k===i));clearInterval(timer);timer=setInterval(()=>go(i+1),6500)}
+$('prev').onclick=()=>go(i-1);$('next').onclick=()=>go(i+1);$('dots').onclick=e=>{if(e.target.dataset.k)go(+e.target.dataset.k)};
+function news(){$('novidades').innerHTML=S.news.map((n,k)=>`<article class="n${k}"><h2>${esc(n.t)}</h2><p>${esc(n.x)}</p><a href="${esc(url(n.h,'#projetos'))}"${tgt(url(n.h,'#projetos'))}>Leia mais</a></article>`).join('')}
+function counters(){const pub=S.projs.filter(p=>p.pub).length,cl=new Set(S.projs.map(p=>p.c)).size;[['s1',pub],['s2',cl],['s3',5]].forEach(([id,v])=>{let c=0;const el=$(id);const t=setInterval(()=>{c+=Math.max(1,Math.ceil(v/20));if(c>=v){c=v;clearInterval(t)}el.textContent=c},40)})}
+function rib(){const w='PORTFÓLIO ★ IDENTIDADE VISUAL ★ SITES ★ EMBALAGENS ★ ';$('rib').textContent=w.repeat(8)}
+function grid(){const q=$('q').value.toLowerCase().trim();
+let l=S.projs.filter(p=>(admin||p.pub)&&(!q||p.t.toLowerCase().includes(q)||p.c.toLowerCase().includes(q)));
+l.sort((a,b)=>$('ord').value==='a'?a.t.localeCompare(b.t,'pt-BR'):b.d.localeCompare(a.d));
+$('grid').innerHTML=l.length?l.map(p=>{const[y,m,d]=(p.d||'--').split('-');return`<div class="card">${admin&&!p.pub?'<span class="priv">🔒 PRIVADO</span>':''}<div class="cv" ${p.im&&p.im.length?`data-lb="${p.id}" style="cursor:zoom-in"`:`style="background:linear-gradient(135deg,${p.g})"`}>${p.im&&p.im.length?`<img src="${p.im[0]}" alt="">${p.im.length>1?`<span class="mr">+${p.im.length-1}</span>`:''}`:p.e}</div><div class="cb"><small>${p.d?d+'/'+m+'/'+y+(p.h?' às '+p.h:'')+' · ':''}${esc(p.c)}</small><h3>${esc(p.t)}</h3><p>${esc(p.x)}</p>${admin&&p.n?`<div class="note">🔒 ${esc(p.n)}</div>`:''}<a class="q" href="${esc(url(p.k,S.cfg.link))}"${tgt(url(p.k,S.cfg.link))}>Quero mais →</a></div><div class="ca"><button data-ed="${p.id}">Editar</button><button data-del="${p.id}">Excluir</button></div></div>`}).join(''):'<div class="empty">Nenhum projeto encontrado.</div>'}
+$('q').oninput=grid;$('ord').onchange=grid;
+$('grid').onclick=e=>{const lc=e.target.closest('[data-lb]');if(lc){const q=S.projs.find(x=>x.id===lc.dataset.lb);if(q)lb(q.im,0);return}const a=e.target.dataset;if(a.ed)projModal(a.ed);if(a.del&&confirm('Excluir este projeto?')){S.projs=S.projs.filter(p=>p.id!==a.del);save();grid();toast('Projeto excluído')}};
+function modal(h,onSave){$('mo').innerHTML=h+'<div class="ma"><button id="mc">Cancelar</button><button class="p" id="ms">Salvar</button></div>';$('ov').classList.add('on');$('mc').onclick=close;$('ms').onclick=()=>{if(onSave()!==false)close()}}
+function close(){$('ov').classList.remove('on')}
+function slidesModal(){modal('<h2>Editar banner</h2>'+S.slides.map((s,k)=>`<label>Slide ${k+1} — título</label><input id="a${k}" value="${esc(s.t)}"><label>Subtítulo</label><input id="b${k}" value="${esc(s.s)}"><label>Texto do botão</label><input id="c${k}" value="${esc(s.b)}"><label>🔗 Link do botão</label><input id="d${k}" value="${esc(s.h)}" placeholder="https://... ou #projetos"><hr>`).join(''),()=>{S.slides.forEach((s,k)=>{s.t=$('a'+k).value;s.s=$('b'+k).value;s.b=$('c'+k).value;s.h=$('d'+k).value.trim()||'#projetos'});save();hero();toast('Banner atualizado')})}
+function newsModal(){modal('<h2>Editar novidades</h2>'+S.news.map((n,k)=>`<label>Novidade ${k+1} — título</label><input id="a${k}" value="${esc(n.t)}"><label>Texto</label><textarea id="b${k}">${esc(n.x)}</textarea><label>🔗 Link do "Leia mais"</label><input id="c${k}" value="${esc(n.h||'')}" placeholder="https://..."><hr>`).join(''),()=>{S.news.forEach((n,k)=>{n.t=$('a'+k).value;n.x=$('b'+k).value;n.h=$('c'+k).value.trim()});save();news();toast('Novidades atualizadas')})}
+function projModal(id){const p=id?S.projs.find(x=>x.id===id):{t:'',c:'',d:new Date().toISOString().slice(0,10),h:'',x:'',n:'',pub:true,im:[]};
+pend=[...(p.im||[])];
+modal(`<h2>${id?'Editar':'Novo'} projeto</h2><label>Nome do projeto</label><input id="f1" value="${esc(p.t)}"><label>Cliente</label><input id="f2" value="${esc(p.c)}"><label>Data</label><input id="f3" type="date" value="${p.d||''}"><label>Hora</label><input id="f7" type="time" value="${p.h||''}"><label>Descrição (público)</label><textarea id="f4">${esc(p.x)}</textarea><label>🔗 Link do botão "Quero mais" (atendimento, WhatsApp, site…)</label><input id="f8" value="${esc(p.k||'')}" placeholder="wa.me/5585999999999 ou seusite.com/atendimento"><div class="hint">Vazio = usa o link de atendimento geral.</div><label>🔒 Notas privadas (só você vê)</label><textarea id="f5">${esc(p.n)}</textarea><label><input id="f6" type="checkbox" ${p.pub?'checked':''}>Mostrar na página do cliente</label><label>Fotos do projeto (até 8)</label><label class="drop">📷 Tirar foto ou escolher imagens<input id="fi" type="file" accept="image/*" multiple hidden></label><div class="th" id="th"></div><div class="hint" id="bh"></div>`,()=>{
+if(!$('f1').value.trim()||!$('f2').value.trim()){toast('Preencha projeto e cliente');return false}
+const em=['🎨','📐','🖼️','📦','💻','☕','🥖'],gs=['#25505a,#3f8a94','#7a2e2e,#c25a4a','#8a5a1a,#c99a4b','#3a4a7a,#5a7ac2'];
+const r=Object.assign(p,{t:$('f1').value.trim(),c:$('f2').value.trim(),d:$('f3').value,x:$('f4').value.trim(),n:$('f5').value.trim(),pub:$('f6').checked,h:$('f7').value,k:$('f8').value.trim(),im:[...pend]});
+if(!id){r.id='p'+Date.now();r.e=em[Math.random()*em.length|0];r.g=gs[Math.random()*gs.length|0];S.projs.push(r)}
+if(!save()){if(!id)S.projs.pop();toast('Sem espaço para salvar — remova uma foto');return false}grid();counters();toast('Projeto salvo')});renderTh();$('fi').onchange=addImgs}
+/* acesso escondido: #admin na URL ou 3 cliques no © do rodapé */
+function loginModal(){modal('<h2>🔒 Área restrita</h2><label>Senha</label><input id="pw" type="password" autofocus><div class="err" id="er"></div><div class="hint">Demonstração: a senha é <b>acervo2026</b>. No site real o login é feito pelo Supabase e ninguém consegue burlar.</div>',()=>{if($('pw').value!==PASS){$('er').textContent='Senha incorreta.';return false}enter()});setTimeout(()=>{const p=$('pw');p&&p.addEventListener('keydown',e=>{if(e.key==='Enter')$('ms').click()})},50)}
+function enter(){admin=true;document.body.classList.add('adm');$('bar').classList.add('on');grid();toast('Modo edição ativado');history.replaceState(null,'',location.pathname)}
+$('out').onclick=()=>{admin=false;document.body.classList.remove('adm');$('bar').classList.remove('on');grid();toast('Você saiu')};
+$('eS').onclick=slidesModal;$('eN').onclick=newsModal;$('eC').onclick=cfgModal;$('eP').onclick=()=>projModal(null);
+let ck=0,ct;$('sec').onclick=()=>{ck++;clearTimeout(ct);ct=setTimeout(()=>ck=0,900);if(ck>=3){ck=0;if(!admin)loginModal()}};
+function chk(){if(location.hash==='#admin'&&!admin)loginModal()}addEventListener('hashchange',chk);
+let pend=[],L=[],Li=0;
+function lb(a,k){L=a;Li=k;$('li').src=L[Li];$('lc').textContent=(Li+1)+' / '+L.length;$('lp').style.display=$('ln').style.display=L.length>1?'block':'none';$('lb').classList.add('on')}
+$('lx').onclick=()=>$('lb').classList.remove('on');$('lp').onclick=()=>lb(L,(Li-1+L.length)%L.length);$('ln').onclick=()=>lb(L,(Li+1)%L.length);
+$('lb').onclick=e=>{if(e.target===$('lb'))$('lb').classList.remove('on')};
+const BUD=900000,used=()=>pend.reduce((t,x)=>t+x.length,0);
+function renderTh(){$('th').innerHTML=pend.map((s,k)=>`<div class="tb"><img src="${s}"><button type="button" data-r="${k}">×</button></div>`).join('');
+$('th').onclick=e=>{if(e.target.dataset.r!==undefined){pend.splice(+e.target.dataset.r,1);renderTh()}};
+$('bh').textContent=`Espaço das fotos: ${(used()/1e6).toFixed(1)}MB de ${(BUD/1e6).toFixed(1)}MB. As fotos são reduzidas automaticamente.`}
+function comp(f){return new Promise((res,rej)=>{const u=URL.createObjectURL(f),im=new Image();im.onload=()=>{URL.revokeObjectURL(u);let d=1000,q=.75,out='';
+for(let t=0;t<10;t++){let w=im.width,h=im.height;const m=Math.max(w,h);if(m>d){w=Math.round(w*d/m);h=Math.round(h*d/m)}const c=document.createElement('canvas');c.width=w;c.height=h;const x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,w,h);x.drawImage(im,0,0,w,h);out=c.toDataURL('image/jpeg',q);if(out.length<=150000)break;if(q>.45)q-=.1;else{d=Math.round(d*.8);q=.65}}res(out)};
+im.onerror=()=>{URL.revokeObjectURL(u);rej()};im.src=u})}
+async function addImgs(e){const fs=[...e.target.files].slice(0,8-pend.length);let bad=0,full=0;
+for(const f of fs){try{const s=await comp(f);if(used()+s.length>BUD){full++;continue}pend.push(s);renderTh()}catch(_){bad++}}
+e.target.value='';if(bad)toast(bad+' imagem(ns) não puderam ser lidas');if(full)toast('Espaço das fotos acabou — remova alguma para adicionar outra')}
+function url(u,d){u=(u||'').trim();if(!u)return d?url(d):'#contato';if(/^(https?:|mailto:|tel:|#|\/)/i.test(u))return u;if(/^\+?[\d\s()-]{8,}$/.test(u))return 'https://wa.me/'+u.replace(/\D/g,'');if(/^[^\s@]+@[^\s@]+$/.test(u))return 'mailto:'+u;return 'https://'+u}
+function tgt(h){return /^#/.test(h)?'':' target="_blank" rel="noopener"'}
+function foot(){const l=url(S.cfg.link,'#contato');$('ft').innerHTML=esc(S.cfg.email)+' · '+esc(S.cfg.info)+'<br><br><a class="cta" href="'+esc(l)+'"'+tgt(l)+'>Falar com o atendimento <span>→</span></a>';$('pill').href=l;if(/^#/.test(l))$('pill').removeAttribute('target');else{$('pill').target='_blank';$('pill').rel='noopener'}}
+function cfgModal(){modal(`<h2>Atendimento e contato</h2><label>E-mail exibido no rodapé</label><input id="g1" value="${esc(S.cfg.email)}"><label>Texto complementar</label><input id="g2" value="${esc(S.cfg.info)}"><label>🔗 Link de atendimento (botão "Fale comigo" e padrão do "Quero mais")</label><input id="g3" value="${esc(S.cfg.link)}" placeholder="wa.me/5585999999999, e-mail ou página de atendimento"><div class="hint">Aceita link (https://…), número de WhatsApp com DDD, e-mail ou #contato. Ao clicar, o visitante é levado direto para lá.</div>`,()=>{S.cfg={email:$('g1').value.trim(),info:$('g2').value.trim(),link:$('g3').value.trim()||'#contato'};save();foot();grid();toast('Atendimento atualizado')})}
+hero();news();rib();grid();counters();foot();chk();
+</script>
+</body>
+</html>
